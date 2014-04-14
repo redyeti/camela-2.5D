@@ -1,0 +1,2 @@
+class StorageItem(object):
+	pass
