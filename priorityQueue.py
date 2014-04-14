@@ -24,7 +24,7 @@ class PriorityQueue(Sequence):
 	def __getitem__(self, k):
 		return self.__h[k]
 
-	def __len__(self, k):
+	def __len__(self):
 		return len(self.__h)
 
 	def __str__(self):

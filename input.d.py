@@ -33,25 +33,16 @@ canvas.elements = {
 animation.length = 10.0
 
 # Setze die Anzahl an Frames pro Sekunde. 
-animation.fps = 16
+animation.fps = 4
+
+# Setze synchronisationsmodus
+animation.synchronous = True
 
 @event
-def _(animation, camera, canvas):
-	yield 1.8
-	# do something at 1.8 sec
+def first(animation, camera, canvas):
+	yield 0
+	# do something at 0 sec
 	
-	yield 2.4
-	# do something at 2.4 sec
-
-@event
-def _(animation, camera, canvas):
-	while True:
-		yield animation.nextFrame()
-		# do something each frame
-
-@event
-def _(animation, camera, canvas):
-	yield 0.2
 
 # Set the output format
 output.format = "svg"
