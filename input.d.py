@@ -35,12 +35,23 @@ animation.length = 10.0
 # Setze die Anzahl an Frames pro Sekunde. 
 animation.fps = 16
 
-# Beschreibe hier den Animationsverlauf. Die Funktion wird vor
-# jedem Frame aufgerufen. time ist ein spezielles Objekt, welches
-# jeder zeit gleicht (== Operator), die innerhalb des Frames
-# liegt.
-def schedule(time, frame, camera, canvas, data):
-	pass
+@event
+def _(animation, camera, canvas):
+	yield 1.8
+	# do something at 1.8 sec
+	
+	yield 2.4
+	# do something at 2.4 sec
+
+@event
+def _(animation, camera, canvas):
+	while True:
+		yield animation.nextFrame()
+		# do something each frame
+
+@event
+def _(animation, camera, canvas):
+	yield 0.2
 
 # Set the output format
 output.format = "svg"
