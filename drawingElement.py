@@ -34,8 +34,8 @@ class DrawingElement(object):
 		#print "After :", t2.translationAfter.x, t2.translationAfter.y
 
 		# apply local transformation data
-		self.x = t2.translationAfter.x
-		self.y = t2.translationAfter.y
+		self.x = t2.translationBefore.x
+		self.y = t2.translationBefore.y
 		self.rotation = t2.rotation.beta
 
 		self.scaleX = t2.scale.sx
@@ -58,7 +58,7 @@ class DrawingElement(object):
 		r = Transformation.fromData("rotate", (self.rotation,))
 		t = Transformation.fromData("translate", (self.x, self.y))
 
-		tb = t.translationBefore
+		tb = (t * s * r).translationAfter 
 		
 		n = self.__node
 		n.set('x', str(tb.x))
