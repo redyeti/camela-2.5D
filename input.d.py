@@ -43,6 +43,9 @@ animation.synchronous = True
 def first(animation, camera, canvas):
 	yield 0
 	# do something at 0 sec
+
+	yield 1
+	canvas['3'].rotation += 90
 	
 
 # Set the output format

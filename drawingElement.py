@@ -24,11 +24,19 @@ class DrawingElement(object):
 		else:
 			raise ValueError("At least one of distance, width or height must be set.")
 
+		# find gravity
+		gx = float(self.__node.get("width"))/2
+		gy = float(self.__node.get("height"))/2
+		#gx = 0
+		#gy = 0
+		self.__anchor = Transformation.fromData("translate", (gx, gy))
+
 		# get transformation data from xml node
 		x = float(self.__node.get("x",0))
 		y = float(self.__node.get("y",0))
 		t1 = Transformation.fromCss(self.__node.get("transform",""))
-		t2 = Transformation.fromData("translate", (x,y)) * t1
+		#t2 = self.__anchor * Transformation.fromData("translate", (x,y)) * t1
+		t2 = Transformation.fromData("translate", (x,y)) * t1 * self.__anchor
 
 		#print "Before:", t2.translationBefore.x, t2.translationBefore.y
 		#print "After :", t2.translationAfter.x, t2.translationAfter.y
@@ -58,7 +66,10 @@ class DrawingElement(object):
 		r = Transformation.fromData("rotate", (self.rotation,))
 		t = Transformation.fromData("translate", (self.x, self.y))
 
-		tb = (t * s * r).translationAfter 
+		a = self.__anchor
+		ia = inv(self.__anchor)
+
+		tb = (t * s * r * ia).translationAfter 
 		
 		n = self.__node
 		n.set('x', str(tb.x))
