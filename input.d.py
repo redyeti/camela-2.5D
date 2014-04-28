@@ -6,7 +6,7 @@
 extern.imageMagick = "convert"
 
 # Primärquelle, also das Eingabebild
-canvas.primarySource = "input.g.svg"
+canvas.primarySource = "testbild.g.svg"
 
 # Brennweite der Kamera in mm, mit der das Eingabebild
 # aufgenommen worden wäre, wenn es den tatsächlich ein 
@@ -24,9 +24,10 @@ camera.position = (400, 300)
 # Was hier nicht drinsteht, wird als unendlich weit entfernter
 # Hintergrund behandelt.
 canvas.elements = {
-	'SomeId': {'distance': 5},
-	'OtherId1': {'width': 10},
-	'OtherId2': {'height': 8, 'visible': False},
+	'3': {'distance': 5},
+	'1': {'distance': 10},
+	'2': {'distance': 8},
+	'4': {'distance': 8},
 }
 
 # Setze die Dauer der Animation in Sekunden

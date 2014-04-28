@@ -1,6 +1,10 @@
 #!/usr/bin/env python
 #-*- coding: utf8 -*-
 import argparse
+import numpy as np
+
+np.set_printoptions(suppress=True)
+
 
 parser = argparse.ArgumentParser(description='Camela 2.5D')
 parser.add_argument('--force','-f', action="store_true", help="Bestehende Dateien überschreiben")
